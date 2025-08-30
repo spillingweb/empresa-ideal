@@ -1,8 +1,9 @@
+import AppLayout from '../../layout/AppLayout.js';
 import styles from './Create.module.css';
 
 const Create = () => {
   return (
-    <>
+    <AppLayout>
       <h1>Create Client</h1>
       <form className={styles.form}>
         <div className={styles.formGroup}>
@@ -15,8 +16,8 @@ const Create = () => {
         </div>
         <button type="submit">Create</button>
       </form>
-    </>
-  )
+    </AppLayout>
+  );
 };
 
 export default Create;

@@ -11,24 +11,34 @@ class ClientController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Welcome', [
+        return Inertia::render('clients/Index', [
             'name' => 'Karoline',
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Client/Create');
+        return Inertia::render('clients/Create');
     }
 
     public function store(Request $request)
     {
         // Validate and create the client
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:clients|max:255',
+            'telephone' => 'string|max:20',
+        ]);
+
+        Client::create($validated);
+
+        return redirect()->route('client.list');
     }
 
     public function edit(Client $client)
     {
-        return Inertia::render('Client/Edit', [
+        return Inertia::render('clients/Edit', [
             'client' => $client,
         ]);
     }
@@ -36,6 +46,16 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         // Validate and update the client
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:clients,email,' . $client->id,
+            'telephone' => 'string|max:20',
+        ]);
+
+        $client->update($validated);
+
+        return redirect()->route('client.list');
     }
 
 

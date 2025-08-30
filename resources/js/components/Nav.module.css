@@ -1,0 +1,23 @@
+.nav {
+    background-color: #f8f9fa;
+    padding: 1rem;
+}
+
+.navList {
+    list-style: none;
+    padding: 0;
+}
+
+.navList li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+.navList a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.navList a:hover {
+    text-decoration: underline;
+}

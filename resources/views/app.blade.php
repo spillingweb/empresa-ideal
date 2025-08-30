@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>App clientes</title>
+    <title inertia>{{ config('app.name', 'Empresa Ideal') }}</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.tsx'])
     @inertiaHead

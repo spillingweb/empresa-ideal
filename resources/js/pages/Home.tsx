@@ -1,4 +1,6 @@
 import React from "react";
+import AppLayout from "../layout/AppLayout.js";
+import { Head } from "@inertiajs/react";
 
 interface HomeProps {
     name: string;
@@ -6,10 +8,11 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ name }) => {
     return (
-        <div>
-            <h1>Welcome, {name}!</h1>
-            <p>This is your first Inertia page with React and TypeScript.</p>
-        </div>
+        <AppLayout>
+            <Head title={`Inicio - ${name}`} />
+            <h1>Bienvenido, {name}!</h1>
+            <p>Esta es tu primera página de Inertia con React y TypeScript.</p>
+        </AppLayout>
     );
 };
 
