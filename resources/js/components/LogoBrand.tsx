@@ -1,12 +1,8 @@
-import styles from './LogoBrand.module.css';
-import Logo from '../../../public/logo.png';
+import styles from "./LogoBrand.module.css";
+import Logo from "../../../public/logo.png";
 
 const LogoBrand = () => {
-  return (
-    <div className={styles.logoBrand}>
-      <img src={Logo} alt="Logo Empresa Ideal" className={styles.logo} />
-    </div>
-  )
+    return <img className={styles.logo} src={Logo} alt="Logo Empresa Ideal" />;
 };
 
 export default LogoBrand;

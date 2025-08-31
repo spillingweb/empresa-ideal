@@ -3,14 +3,33 @@ table {
     border-collapse: collapse;
 }
 
-.deleteIcon {
-    cursor: pointer;
-    color: red;
-    transition: color 0.2s;
+.icons {
+    display: flex;
+    justify-content: space-between;
 }
 
-.deleteIcon:hover {
+.editIcon {
+    cursor: pointer;
+    color: #007bff;
+    transition: all 0.2s;
+}
+
+.editIcon:hover {
+    color: #0056b3;
+    transform: scale(1.1);
+}
+
+.deleteButton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: red;
+    transition: all 0.2s;
+}
+
+.deleteButton:hover {
     color: darkred;
+    transform: scale(1.1);
 }
 
 .noData {

@@ -20,3 +20,8 @@
 .navList a:hover {
     text-decoration: underline;
 }
+
+.active {
+    font-weight: bold;
+    color: #0056b3;
+}

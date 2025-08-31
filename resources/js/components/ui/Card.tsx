@@ -1,11 +1,19 @@
-import styles from './Card.module.css';
+import styles from "./Card.module.css";
 
-const Card = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <div className={styles.card}>
-            {children}
-        </div>
-    );
+const Card = ({
+    className,
+    children,
+}: {
+    className?: string | undefined;
+    children: React.ReactNode;
+}) => {
+    let classes = styles.card;
+
+    if (className) {
+        classes += ` ${className}`;
+    }
+
+    return <div className={classes}>{children}</div>;
 };
 
 export default Card;

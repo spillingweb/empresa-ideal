@@ -1,0 +1,21 @@
+.tableHeader {
+    border: none;
+    background: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font: inherit;
+}
+
+.sortIcon {
+    visibility: hidden;
+}
+
+.tableHeader:hover,
+.tableHeader:focus {
+    .sortIcon {
+        visibility: visible;
+    }
+}

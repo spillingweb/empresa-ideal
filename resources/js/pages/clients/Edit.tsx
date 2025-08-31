@@ -24,8 +24,8 @@ const Edit = ({ client }: { client: Client }) => {
     return (
         <AppLayout>
             <Head title="Editar cliente" />
-            <Card>
-                <Heading>Editar cliente</Heading>
+            <Card className={styles.container}>
+                <Heading bottomMargin="medium">Editar cliente</Heading>
                 <Form onSubmit={handleSubmit}>
                     <div className={styles.formGroup}>
                         <label htmlFor="name">Nombre</label>

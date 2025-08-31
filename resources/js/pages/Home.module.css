@@ -1,8 +1,15 @@
 .image {
     position: absolute;
-    top: 7rem;
+    top: 6rem;
     left: 0;
     width: 100%;
-    height: calc(100vh - 12rem);
+    height: calc(100vh - 9rem);
     object-fit: cover;
+}
+
+.textOverlay {
+    color: white;
+    z-index: 100;
+    font-size: 3rem;
+    max-width: 80rem;
 }

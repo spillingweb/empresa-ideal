@@ -1,5 +1,11 @@
-.heading {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 12px;
+.mbSmall {
+    margin-bottom: 8px;
+}
+
+.mbMedium {
+    margin-bottom: 16px;
+}
+
+.mbLarge {
+    margin-bottom: 24px;
 }

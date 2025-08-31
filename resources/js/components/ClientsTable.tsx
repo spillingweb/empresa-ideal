@@ -2,8 +2,9 @@ import { Link, router } from "@inertiajs/react";
 import type { Client } from "../types/index.js";
 import Table from "./ui/Table.js";
 import { route } from "ziggy-js";
-import { Trash } from "lucide-react";
+import { Trash, Pencil } from "lucide-react";
 import styles from "./ClientsTable.module.css";
+import ClientsTableHeader from "./ClientsTableHeader.js";
 
 type ClientsTableProps = {
     clients: Client[];
@@ -44,17 +45,27 @@ const ClientsTable = ({
         <Table>
             <thead>
                 <tr>
-                    <th onClick={() => handleHeaderClick("id")}>ID</th>
-                    <th onClick={() => handleHeaderClick("name")}>Nombre</th>
-                    <th onClick={() => handleHeaderClick("email")}>
-                        Correo electrónico
-                    </th>
-                    <th onClick={() => handleHeaderClick("telephone")}>
-                        Teléfono
-                    </th>
-                    <th onClick={() => handleHeaderClick("created_at")}>
-                        Creado
-                    </th>
+                    <ClientsTableHeader
+                        text="ID"
+                        onClick={() => handleHeaderClick("id")}
+                    />
+                    <ClientsTableHeader
+                        text="Nombre"
+                        onClick={() => handleHeaderClick("name")}
+                    />
+                    <ClientsTableHeader
+                        text="Correo electrónico"
+                        onClick={() => handleHeaderClick("email")}
+                    />
+                    <ClientsTableHeader
+                        text="Teléfono"
+                        onClick={() => handleHeaderClick("telephone")}
+                    />
+                    <ClientsTableHeader
+                        text="Creado"
+                        onClick={() => handleHeaderClick("created_at")}
+                    />
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -67,20 +78,29 @@ const ClientsTable = ({
                             <td>{client.telephone}</td>
                             <td>{client.created_at}</td>
                             <td>
-                                <Link href={route("client.edit", client.id)}>
-                                    Editar
-                                </Link>
-                            </td>
-                            <td>
-                                <Trash
-                                    size={16}
-                                    className={styles.deleteIcon}
-                                    onClick={() =>
-                                        handleDeleteClient(client.id)
-                                    }
-                                >
-                                    Eliminar
-                                </Trash>
+                                <div className={styles.icons}>
+                                    <Link
+                                        href={route("client.edit", client.id)}
+                                        title="Editar cliente"
+                                    >
+                                        <Pencil
+                                            size={16}
+                                            className={styles.editIcon}
+                                        />
+                                    </Link>
+                                    <button
+                                        title="Eliminar cliente"
+                                        className={styles.deleteButton}
+                                        onClick={() =>
+                                            handleDeleteClient(client.id)
+                                        }
+                                    >
+                                        <Trash
+                                            size={16}
+                                            className={styles.deleteIcon}
+                                        />
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     ))
