@@ -1,6 +1,4 @@
 .button {
-    background-color: #007bff;
-    color: white;
     border: none;
     border-radius: 4px;
     padding: 12px 16px;
@@ -9,6 +7,20 @@
     transition: background-color 0.3s;
 }
 
-.button:hover {
+.primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.primary:hover {
     background-color: #0056b3;
+}
+
+.secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.secondary:hover {
+    background-color: #5a6268;
 }

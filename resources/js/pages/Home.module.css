@@ -1,0 +1,8 @@
+.image {
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 12rem);
+    object-fit: cover;
+}

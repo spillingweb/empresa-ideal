@@ -1,17 +1,13 @@
-import React from "react";
 import AppLayout from "../layout/AppLayout.js";
 import { Head } from "@inertiajs/react";
+import Photo from "../../../public/home.jpg";
+import styles from "./Home.module.css";
 
-interface HomeProps {
-    name: string;
-}
-
-const Home: React.FC<HomeProps> = ({ name }) => {
+const Home = () => {
     return (
         <AppLayout>
-            <Head title={`Inicio - ${name}`} />
-            <h1>Bienvenido, {name}!</h1>
-            <p>Esta es tu primera página de Inertia con React y TypeScript.</p>
+            <Head title="Empresa Ideal" />
+            <img src={Photo} alt="Home" className={styles.image} />
         </AppLayout>
     );
 };

@@ -1,0 +1,11 @@
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.searchContainer {
+    margin-bottom: 1rem;
+    max-width: 30rem;
+}

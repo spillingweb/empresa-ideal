@@ -20,6 +20,11 @@ input {
     border-radius: 4px;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
 button {
     padding: 0.5rem 1rem;
     background-color: #007bff;
