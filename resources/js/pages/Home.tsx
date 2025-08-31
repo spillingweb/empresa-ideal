@@ -1,17 +1,23 @@
 import AppLayout from "../layout/AppLayout.js";
 import { Head } from "@inertiajs/react";
-import Photo from "../../../public/home.jpg";
+import PhotoS from "../../../public/homeS.jpg";
+import PhotoM from "../../../public/homeM.jpg";
+import PhotoL from "../../../public/homeL.jpg";
 import styles from "./Home.module.css";
-import LogoBrand from "../components/LogoBrand.js";
 
 const Home = () => {
     return (
         <AppLayout>
             <Head title="Empresa Ideal" />
-            <img src={Photo} alt="Home" className={styles.image} />
+            <img
+                className={styles.image}
+                srcSet={`${PhotoS} 320w, ${PhotoM} 680w, ${PhotoL} 960w`}
+                src={PhotoL}
+                alt="View from the office"
+            />
             <div className={styles.textOverlay}>
-                <h1>Tu deseo</h1>
-                <h1>Nuestra misión</h1>
+                <h1>tu deseo...</h1>
+                <h1>...nuestra misión</h1>
             </div>
         </AppLayout>
     );

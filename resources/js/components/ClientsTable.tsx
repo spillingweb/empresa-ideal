@@ -2,7 +2,7 @@ import { Link, router } from "@inertiajs/react";
 import type { Client } from "../types/index.js";
 import Table from "./ui/Table.js";
 import { route } from "ziggy-js";
-import { Trash, Pencil } from "lucide-react";
+import { Trash, PencilLine } from "lucide-react";
 import styles from "./ClientsTable.module.css";
 import ClientsTableHeader from "./ClientsTableHeader.js";
 
@@ -31,12 +31,6 @@ const ClientsTable = ({
         if (confirm("¿Estás seguro de que deseas eliminar este cliente?")) {
             router.delete(route("client.destroy", clientId), {
                 preserveState: true,
-                onSuccess: () => {
-                    // Handle successful deletion (e.g., show a success message)
-                },
-                onError: () => {
-                    // Handle error (e.g., show an error message)
-                },
             });
         }
     };
@@ -83,7 +77,7 @@ const ClientsTable = ({
                                         href={route("client.edit", client.id)}
                                         title="Editar cliente"
                                     >
-                                        <Pencil
+                                        <PencilLine
                                             size={16}
                                             className={styles.editIcon}
                                         />

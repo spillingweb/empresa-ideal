@@ -27,7 +27,7 @@ class ClientController extends Controller
 
         $clients = Client::search($request)
             ->orderBy($orderColumn, $orderDirection)
-            ->paginate(perPage: 20);
+            ->paginate(perPage: 15);
 
         return Inertia::render('clients/Index', [
             'clients' => ClientResource::collection($clients),
@@ -48,7 +48,7 @@ class ClientController extends Controller
 
         Client::create($validated);
 
-        return redirect()->route('client.list')->with('success', 'Se ha creado el cliente con éxito.');
+        return redirect()->route('client.list')->with('success', 'Se ha creado el cliente.');
     }
 
     public function edit(Client $client)
@@ -66,7 +66,7 @@ class ClientController extends Controller
 
         $client->update($validated);
 
-        return redirect()->route('client.list');
+        return redirect()->route('client.list')->with('success', 'Se ha actualizado el cliente.');
     }
 
 
@@ -75,6 +75,6 @@ class ClientController extends Controller
         // Validate and delete the client
         $client->delete();
 
-        return redirect()->route('client.list')->with('success', 'Se ha eliminado el cliente con éxito.');
+        return redirect()->route('client.list')->with('success', 'Se ha eliminado el cliente.');
     }
 }

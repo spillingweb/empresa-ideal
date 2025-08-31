@@ -1,6 +1,10 @@
 .container {
-    width: 30rem;
+    width: 25rem;
     align-self: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .buttons {

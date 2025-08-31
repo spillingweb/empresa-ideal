@@ -2,7 +2,6 @@ import { Head, router } from "@inertiajs/react";
 import AppLayout from "../../layout/AppLayout.js";
 import type { Client } from "../../types/index.js";
 import Heading from "../../components/ui/Heading.js";
-import { useEffect, useMemo, useRef, useState } from "react";
 import Pagination from "../../components/ui/Pagination.js";
 import Input from "../../components/ui/Input.js";
 import Button from "../../components/ui/Button.js";
@@ -10,7 +9,7 @@ import { route } from "ziggy-js";
 import ClientsTable from "../../components/ClientsTable.js";
 import styles from "./Index.module.css";
 import useSearchParams from "../../hooks/useSearchParams.js";
-import LogoBrand from "../../components/LogoBrand.js";
+import { X } from "lucide-react";
 
 type IndexProps = {
     clients: {
@@ -38,16 +37,18 @@ const Index = ({ clients, search }: IndexProps) => {
         sortColumn,
         setSortColumn,
         setSortDirection,
-    } = useSearchParams({ search });
+    } = useSearchParams(search);
 
     return (
         <AppLayout>
             <Head title="Clientes" />
+
             <div className={styles.contentContainer}>
                 <div className={styles.flexContainer}>
                     <Heading>Nuestros clientes</Heading>
                     <Button
                         onClick={() => router.visit(route("client.create"))}
+                        variant="success"
                     >
                         + Añadir cliente
                     </Button>
@@ -59,6 +60,12 @@ const Index = ({ clients, search }: IndexProps) => {
                         onChange={(e) => setInputValue(e.target.value)}
                         placeholder="Buscar..."
                     />
+                    <X
+                        size={16}
+                        className={styles.clearIcon}
+                        onClick={() => setInputValue("")}
+                    />
+
                     <Pagination
                         meta={clients.meta}
                         setPageNumber={setPageNumber}

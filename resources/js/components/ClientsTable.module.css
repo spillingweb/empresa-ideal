@@ -6,34 +6,36 @@ table {
 .icons {
     display: flex;
     justify-content: space-between;
+    gap: 0.5rem;
 }
 
 .editIcon {
     cursor: pointer;
-    color: #007bff;
     transition: all 0.2s;
+    color: var(--color-success);
 }
 
 .editIcon:hover {
-    color: #0056b3;
-    transform: scale(1.1);
+    color: var(--color-success-dark);
+    transform: scale(1.2);
 }
 
 .deleteButton {
     border: none;
     background: none;
+    padding: 0;
     cursor: pointer;
-    color: red;
+    color: var(--color-danger);
     transition: all 0.2s;
 }
 
 .deleteButton:hover {
-    color: darkred;
-    transform: scale(1.1);
+    color: var(--color-danger-dark);
+    transform: scale(1.2);
 }
 
 .noData {
     text-align: center;
-    color: #999;
+    color: var(--color-gray);
     padding: 1rem;
 }

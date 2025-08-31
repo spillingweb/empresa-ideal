@@ -2,7 +2,7 @@ import { router } from "@inertiajs/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { route } from "ziggy-js";
 
-const useSearchParams = ({ search }: { search: string }) => {
+const useSearchParams = (search: string) => {
     const isInitialRender = useRef(true);
 
     const [inputValue, setInputValue] = useState<string>(search);
@@ -40,7 +40,6 @@ const useSearchParams = ({ search }: { search: string }) => {
     useEffect(() => {
         if (inputValue === searchTerm) return;
 
-        // Debounce the search input to avoid too many requests
         const handler = setTimeout(() => {
             setSearchTerm(inputValue);
             setPageNumber(1); // Reset to first page on new search

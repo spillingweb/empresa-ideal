@@ -14,14 +14,16 @@
 
 .navList a {
     text-decoration: none;
-    color: #007bff;
+    color: var(--color-primary);
+    font-size: 1.2rem;
+
+    &.active {
+        font-weight: bold;
+        color: var(--color-primary-dark);
+        font-size: 1.3rem;
+    }
 }
 
 .navList a:hover {
     text-decoration: underline;
-}
-
-.active {
-    font-weight: bold;
-    color: #0056b3;
 }
