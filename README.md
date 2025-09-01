@@ -28,6 +28,7 @@ Otherwise, run the application in your preferred way (it might be neccessary to 
 
 ### Backend
 - I chose not to use a Laravel + React starter kit to have better control of project dependencies
+- SQLite for easy implementation without database config
 - Inertia.js and Ziggy for a more fluid communication between frontend and backend
 - ClientFactory and ClientSeeder to populate the database
 - Url search params to filter clients table from database
