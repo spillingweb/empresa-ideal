@@ -1,24 +1,30 @@
 .pagination {
-    flex: 1;
     display: flex;
-    justify-content: flex-end;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+
+    @media screen and (min-width: 768px) {
+        justify-content: flex-end;
+    }
 }
 
 .pageButton {
-    background: none;
     border: 1px solid var(--color-gray);
     border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
     font-size: 0.875rem;
     padding: 0.5rem 1rem;
-    transition: background 0.2s;;
+    transition: background-color 0.2s;
+
+    &:is(:disabled) {
+        pointer-events: none;
+    }
 }
 
 .pageButton:hover {
-    background: var(--color-gray-light);
+    background-color: var(--color-gray-light);
     color: var(--color-foreground);
 }
 
@@ -27,4 +33,5 @@
     border-color: var(--color-primary);
     color: var(--color-white);
     cursor: default;
+    pointer-events: none;
 }

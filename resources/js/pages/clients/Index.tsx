@@ -10,6 +10,7 @@ import ClientsTable from "../../components/ClientsTable.js";
 import styles from "./Index.module.css";
 import useSearchParams from "../../hooks/useSearchParams.js";
 import { X } from "lucide-react";
+import useWindowWidth from "../../hooks/useWindowWidth.js";
 
 type IndexProps = {
     clients: {
@@ -39,20 +40,14 @@ const Index = ({ clients, search }: IndexProps) => {
         setSortDirection,
     } = useSearchParams(search);
 
+    const { windowWidth } = useWindowWidth();
+
     return (
         <AppLayout>
             <Head title="Clientes" />
-
             <div className={styles.contentContainer}>
-                <div className={styles.flexContainer}>
-                    <Heading>Nuestros clientes</Heading>
-                    <Button
-                        onClick={() => router.visit(route("client.create"))}
-                        variant="success"
-                    >
-                        + Añadir cliente
-                    </Button>
-                </div>
+                <Heading>Nuestros clientes</Heading>
+
                 <div className={styles.searchContainer}>
                     <Input
                         value={inputValue}
@@ -65,11 +60,12 @@ const Index = ({ clients, search }: IndexProps) => {
                         className={styles.clearIcon}
                         onClick={() => setInputValue("")}
                     />
-
-                    <Pagination
-                        meta={clients.meta}
-                        setPageNumber={setPageNumber}
-                    />
+                    <Button
+                        onClick={() => router.visit(route("client.create"))}
+                        variant="success"
+                    >
+                        + {windowWidth > 768 && " Añadir cliente"}
+                    </Button>
                 </div>
                 <ClientsTable
                     clients={clients.data}
@@ -77,6 +73,7 @@ const Index = ({ clients, search }: IndexProps) => {
                     setSortColumn={setSortColumn}
                     sortColumn={sortColumn}
                 />
+                <Pagination meta={clients.meta} setPageNumber={setPageNumber} />
             </div>
         </AppLayout>
     );

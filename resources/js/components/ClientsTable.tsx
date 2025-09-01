@@ -5,6 +5,7 @@ import { route } from "ziggy-js";
 import { Trash, PencilLine } from "lucide-react";
 import styles from "./ClientsTable.module.css";
 import ClientsTableHeader from "./ClientsTableHeader.js";
+import useWindowWidth from "../hooks/useWindowWidth.js";
 
 type ClientsTableProps = {
     clients: Client[];
@@ -19,6 +20,8 @@ const ClientsTable = ({
     setSortColumn,
     sortColumn,
 }: ClientsTableProps) => {
+    const { windowWidth } = useWindowWidth();
+
     const handleHeaderClick = (column: string) => {
         if (sortColumn === column) {
             setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
@@ -36,77 +39,88 @@ const ClientsTable = ({
     };
 
     return (
-        <Table>
-            <thead>
-                <tr>
-                    <ClientsTableHeader
-                        text="ID"
-                        onClick={() => handleHeaderClick("id")}
-                    />
-                    <ClientsTableHeader
-                        text="Nombre"
-                        onClick={() => handleHeaderClick("name")}
-                    />
-                    <ClientsTableHeader
-                        text="Correo electrónico"
-                        onClick={() => handleHeaderClick("email")}
-                    />
-                    <ClientsTableHeader
-                        text="Teléfono"
-                        onClick={() => handleHeaderClick("telephone")}
-                    />
-                    <ClientsTableHeader
-                        text="Creado"
-                        onClick={() => handleHeaderClick("created_at")}
-                    />
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {clients.length > 0 ? (
-                    clients.map((client) => (
-                        <tr key={client.id}>
-                            <td>{client.id}</td>
-                            <td>{client.name}</td>
-                            <td>{client.email}</td>
-                            <td>{client.telephone}</td>
-                            <td>{client.created_at}</td>
-                            <td>
-                                <div className={styles.icons}>
-                                    <Link
-                                        href={route("client.edit", client.id)}
-                                        title="Editar cliente"
-                                    >
-                                        <PencilLine
-                                            size={16}
-                                            className={styles.editIcon}
-                                        />
-                                    </Link>
-                                    <button
-                                        title="Eliminar cliente"
-                                        className={styles.deleteButton}
-                                        onClick={() =>
-                                            handleDeleteClient(client.id)
-                                        }
-                                    >
-                                        <Trash
-                                            size={16}
-                                            className={styles.deleteIcon}
-                                        />
-                                    </button>
-                                </div>
+        <div className={styles.tableContainer}>
+            <Table>
+                <thead>
+                    <tr>
+                        {windowWidth >= 768 && (
+                            <ClientsTableHeader
+                                text="ID"
+                                onClick={() => handleHeaderClick("id")}
+                            />
+                        )}
+                        <ClientsTableHeader
+                            text="Nombre"
+                            onClick={() => handleHeaderClick("name")}
+                        />
+                        <ClientsTableHeader
+                            text="Correo electrónico"
+                            onClick={() => handleHeaderClick("email")}
+                        />
+                        <ClientsTableHeader
+                            text="Teléfono"
+                            onClick={() => handleHeaderClick("telephone")}
+                        />
+                        {windowWidth >= 768 && (
+                            <ClientsTableHeader
+                                text="Creado"
+                                onClick={() => handleHeaderClick("created_at")}
+                            />
+                        )}
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {clients.length > 0 ? (
+                        clients.map((client) => (
+                            <tr key={client.id}>
+                                {windowWidth >= 768 && <td>{client.id}</td>}
+                                <td>{client.name}</td>
+                                <td>{client.email}</td>
+                                <td>{client.telephone}</td>
+                                {windowWidth >= 768 && (
+                                    <td>{client.created_at}</td>
+                                )}
+                                <td>
+                                    <div className={styles.icons}>
+                                        <Link
+                                            href={route(
+                                                "client.edit",
+                                                client.id
+                                            )}
+                                            title="Editar cliente"
+                                        >
+                                            <PencilLine
+                                                size={16}
+                                                className={styles.editIcon}
+                                            />
+                                        </Link>
+                                        <button
+                                            title="Eliminar cliente"
+                                            className={styles.deleteButton}
+                                            onClick={() =>
+                                                handleDeleteClient(client.id)
+                                            }
+                                        >
+                                            <Trash
+                                                size={16}
+                                                className={styles.deleteIcon}
+                                            />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan={7} className={styles.noData}>
+                                No hay clientes para mostrar.
                             </td>
                         </tr>
-                    ))
-                ) : (
-                    <tr>
-                        <td colSpan={7} className={styles.noData}>
-                            No hay clientes para mostrar.
-                        </td>
-                    </tr>
-                )}
-            </tbody>
-        </Table>
+                    )}
+                </tbody>
+            </Table>
+        </div>
     );
 };
 

@@ -6,11 +6,3 @@
     height: calc(100vh - 9rem);
     object-fit: cover;
 }
-
-.textOverlay {
-    color: white;
-    z-index: 100;
-    font-size: 3rem;
-    max-width: 80rem;
-    align-self: flex-start;
-}

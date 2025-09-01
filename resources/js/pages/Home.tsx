@@ -11,14 +11,10 @@ const Home = () => {
             <Head title="Empresa Ideal" />
             <img
                 className={styles.image}
-                srcSet={`${PhotoS} 320w, ${PhotoM} 680w, ${PhotoL} 960w`}
+                srcSet={`${PhotoS} 600w, ${PhotoM} 1800w, ${PhotoL} 2300w`}
                 src={PhotoL}
                 alt="View from the office"
             />
-            <div className={styles.textOverlay}>
-                <h1>tu deseo...</h1>
-                <h1>...nuestra misión</h1>
-            </div>
         </AppLayout>
     );
 };

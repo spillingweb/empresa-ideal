@@ -1,15 +1,9 @@
-.nav {
-    padding: 1rem;
-}
-
 .navList {
     list-style: none;
     padding: 0;
-}
-
-.navList li {
-    display: inline;
-    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .navList a {

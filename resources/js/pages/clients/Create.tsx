@@ -11,7 +11,17 @@ import Card from "../../components/ui/Card.js";
 import { useForm } from "laravel-precognition-react-inertia";
 
 const Create = () => {
-    const { data, setData, validate, invalid, errors, submit, reset, processing } = useForm<{
+    const {
+        data,
+        setData,
+        validate,
+        invalid,
+        errors,
+        forgetError,
+        submit,
+        reset,
+        processing,
+    } = useForm<{
         name: string;
         email: string;
         telephone: string;
@@ -42,7 +52,10 @@ const Create = () => {
                             id="name"
                             value={data.name}
                             name="name"
-                            onChange={(e) => setData("name", e.target.value)}
+                            onChange={(e) => {
+                                setData("name", e.target.value);
+                                forgetError("name");
+                            }}
                             onBlur={() => validate("name")}
                         />
                         {invalid("name") && (
@@ -56,7 +69,10 @@ const Create = () => {
                             id="email"
                             value={data.email}
                             name="email"
-                            onChange={(e) => setData("email", e.target.value)}
+                            onChange={(e) => {
+                                setData("email", e.target.value);
+                                forgetError("email");
+                            }}
                             onBlur={() => validate("email")}
                         />
                         {invalid("email") && (
@@ -70,9 +86,10 @@ const Create = () => {
                             id="telephone"
                             value={data.telephone}
                             name="telephone"
-                            onChange={(e) =>
-                                setData("telephone", e.target.value)
-                            }
+                            onChange={(e) => {
+                                setData("telephone", e.target.value);
+                                forgetError("telephone");
+                            }}
                             onBlur={() => validate("telephone")}
                         />
                         {invalid("telephone") && (
