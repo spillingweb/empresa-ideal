@@ -27,7 +27,7 @@ class ClientController extends Controller
 
         $clients = Client::search($request)
             ->orderBy($orderColumn, $orderDirection)
-            ->paginate(perPage: 15)->onEachSide(1);
+            ->paginate(perPage: 15);
 
         return Inertia::render('clients/Index', [
             'clients' => ClientResource::collection($clients),
