@@ -1,6 +1,6 @@
 # Empresa Ideal
 
-A simple Laravel CRUD app using Inertia.js, React.js and Typescript.
+A simple Laravel + Inertia + React + Typescript app displaying a list of clients, and allowing users to create, update and delete clients.
 
 ## How to install
 
